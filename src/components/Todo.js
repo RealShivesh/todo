@@ -2,8 +2,10 @@ import React from 'react'
 
 function Todo() {
     return (
-        <div className="todo-container">
-            <ul className="todo-list"></ul>
+        <div className="todo">
+            <li className="todo-item">Look at the stars</li>
+            <button className="check">Compelete</button>
+            <button className="trash">Delete</button>
         </div>
     )
 }
