@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-function Forms({inputText, setInputText, todos, setTodos }) {
+function Forms({ inputText, setInputText, todos, setTodos, setStatus }) {
     const inputTextHandler = (e) => {
-        console.log(e.target.value);
         setInputText(e.target.value);
     };
     const submitTodoHandler = (e) => {
@@ -14,8 +13,12 @@ function Forms({inputText, setInputText, todos, setTodos }) {
                 completed: false,
                 id: Math.random()
             }
-        ])
-        setInputText("");
+        ]);
+        setInputText('');
+    };
+    const statusHandler = (e) => {
+        console.log(e.target.value);
+        setStatus(e.target.value); //setStatus is not a function
     };
     return (
         <div>
@@ -24,19 +27,29 @@ function Forms({inputText, setInputText, todos, setTodos }) {
                     value={inputText}
                     onChange={inputTextHandler}
                     type="text"
-                    className="todo-input" 
+                    className="todo-input"
                 />
-                <button onClick={submitTodoHandler} className="todo-button" type="submit">here is the button</button>
+                <button
+                    onClick={submitTodoHandler}
+                    className="todo-button"
+                    type="submit"
+                >
+                    here is the button
+                </button>
             </form>
             <div className="select">
-                <select name="todos" className="filter">
+                <select
+                    onChange={statusHandler}
+                    name="todos"
+                    className="filter"
+                >
                     <option value="all">All</option>
-                    <option value="incomplete">Incomplete</option>                
+                    <option value="incomplete">Incomplete</option>
                     <option value="completed">Completed</option>
-            </select>
+                </select>
             </div>
-            </div>
-    )
+        </div>
+    );
 }
 
-export default Forms
+export default Forms;
